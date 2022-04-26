@@ -57,22 +57,22 @@ def download_annotations(name:str, url:str, force_download:bool=False) -> str:
 
 
 
-def COCO(path:str=None, name:str=None, year:int=2017, ann_set:str='val', force_download:bool=False) -> Data:
+def COCO(path:str=None, ann_set:str='val', force_download:bool=False) -> Data:
 	"""
 	Loads ground truth from a COCO-style annotation file.
 	
 	If path is not specified, this will download the COCO annotations for the year and ann_set specified.
 	Valid years are 2014, 2017 and valid ann_sets are 'val' and 'train'.
 	"""
-	if path is None:
-		path = download_annotations(
-			'COCO{}'.format(year),
-			'http://images.cocodataset.org/annotations/annotations_trainval{}.zip'.format(year),
-			force_download)
+# 	if path is None:
+# 		path = download_annotations(
+# 			'COCO{}'.format(year),
+# 			'http://images.cocodataset.org/annotations/annotations_trainval{}.zip'.format(year),
+# 			force_download)
 
-		path = os.path.join(path, 'annotations', 'instances_{}{}.json'.format(ann_set, year))
+# 		path = os.path.join(path, 'annotations', 'instances_{}{}.json'.format(ann_set, year))
 	
-	if name is None: name = default_name(path)
+# 	if name is None: name = default_name(path)
 	
 	with open(path, 'r') as json_file:
 		cocojson = json.load(json_file)
