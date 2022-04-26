@@ -73,7 +73,7 @@ def COCO(path:str=None, ann_set:str='val', force_download:bool=False) -> Data:
 # 		path = os.path.join(path, 'annotations', 'instances_{}{}.json'.format(ann_set, year))
 	
 # 	if name is None: name = default_name(path)
-	
+	name=default_name(path)
 	with open(path, 'r') as json_file:
 		cocojson = json.load(json_file)
 	
